@@ -53,8 +53,8 @@ entity branch_controller is
     sp_op : out std_logic;
     sp_enable : out std_logic := '0';
     
-    -- control rf 
-   -- rf_enable : out std_logic := '0';
+    -- control mux
+    br_sp_enable : out std_logic := '0';
     
     -- control mux 
     mux_alu_dm_select : out std_logic := '0'
@@ -87,6 +87,7 @@ begin
                      if tmp = "00" then
                         -- enable sp write and store the pc
                         sp_enable <= '1';
+                        br_sp_enable <= '1';
                         stored_pc <= current_pc;
                         enable_mux_rf_pc <= '1'; -- write enable for pc to stack 
                         -- write high byte
@@ -108,6 +109,7 @@ begin
                         
                         -- decrease sp 
                         sp_enable <= '1';
+                        br_sp_enable <= '1';
                         tmp <= std_logic_vector(unsigned(tmp) + 1);
                         
                     -- step 3    
@@ -123,6 +125,7 @@ begin
                     else 
                         tmp <= "00";
                         sp_enable <= '0';
+                        br_sp_enable <= '0';
                         enable_mux_rf_pc <= '0';
                         stored_pc <= (others => '0');
                         await_ret <= '1';
@@ -138,6 +141,7 @@ begin
                         -- write dm instead of alu 
                         mux_alu_dm_select <= '1'; --(dec_mux_select_alu_dm)
                         -- sp_op increment
+                        br_sp_enable <= '1';
                         sp_enable <= '1';
                         sp_op <= '0';
                                             
@@ -155,6 +159,7 @@ begin
                         
                         -- decrease sp 
                         sp_enable <= '1';
+                        br_sp_enable <= '1';
                         tmp <= std_logic_vector(unsigned(tmp) + 1);
                         
                     -- step 3    
@@ -173,6 +178,7 @@ begin
                     else 
                         tmp <= "00";
                         sp_enable <= '0';
+                        br_sp_enable <= '0';
                         mux_alu_dm_select <= '0';
                         await_ret <= '0';
                     end if;

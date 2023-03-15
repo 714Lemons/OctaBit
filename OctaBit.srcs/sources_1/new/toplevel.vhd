@@ -107,6 +107,10 @@ signal br_mux_select_alu_dm     : std_logic;
 -- for controlling if rf or pc from branch controller
 signal br_mux_rf_br_enable       : std_logic;
 
+signal mux_br_sp_enable : std_logic;
+signal br_sp_enable : std_logic;
+signal br_sp_op_code : std_logic;
+
 
 -- Z-Address
 signal dm_z_addr                    : std_logic_vector(9 downto 0);
@@ -140,6 +144,11 @@ signal mux_rf_dec_alu_opB : std_logic_vector(7 downto 0);
 
 -- MUX BR-RF to dm
 signal mux_rf_br_dm : std_logic_vector(7 downto 0);
+
+-- MUX BR-DEC to sp 
+signal mux_dec_br_sp_enable : std_logic;
+signal mux_dec_br_sp_op_code : std_logic;
+
 
 -- _________________________________________ COMPONENTS _________________________________________________
 
@@ -177,10 +186,6 @@ component decoder is
     immediate_value     : out std_logic_vector(7 downto 0) := (others => '0');
     w_e_dm              : out std_logic;
     mux_alu_dm_select   : out std_logic;
-    
-    -- not needed
-    pc_override         : out std_logic;
-    pc_override_offset  : out std_logic_vector(11 downto 0);
     
     sreg_override       : out std_logic;
     sreg_override_value : out std_logic_vector(7 downto 0);
@@ -257,7 +262,10 @@ component branch_controller is
     sp_enable           : out std_logic;
     
     --rf_enable           : out std_logic;
-    mux_alu_dm_select   : out std_logic
+    mux_alu_dm_select   : out std_logic;
+    
+    -- mux sp 
+    br_sp_enable : out std_logic
     );
 end component;
 
@@ -376,15 +384,11 @@ port map(
     immediate_value     => dec_immediate_value,
     w_e_dm              => dec_dm_write_enable,
     mux_alu_dm_select   => dec_mux_select_alu_dm,
-    pc_override         => dec_pc_override_enable,
-    pc_override_offset  => dec_pc_override_offset,
     sreg_override       => dec_sreg_override_enable,
     sreg_override_value => dec_sreg_override_value,
-    --sp_op               => dec_sp_op,
-    sp_op               => open,
-    --sp_addr_enable      => dec_sp_enable,
-    sp_addr_enable      => open,
-    
+
+    sp_op               => dec_sp_op,
+    sp_addr_enable      => dec_sp_enable,
     dbg_op_code         => open,
     
     -- branching
@@ -457,11 +461,14 @@ port map(
     dm_value => br_mux_z_br_value,
     hold_pc => br_pc_hold,
     enable_mux_rf_pc => br_mux_rf_br_enable,
-    sp_op => dec_sp_op,
-    sp_enable => dec_sp_enable,
+
     
     --rf_enable => dec_rf_write_enable,
-    mux_alu_dm_select => br_mux_select_alu_dm
+    mux_alu_dm_select => br_mux_select_alu_dm,
+    
+    br_sp_enable => mux_br_sp_enable,
+    sp_op => br_sp_op_code,
+    sp_enable => br_sp_enable
 
 );
 
@@ -482,8 +489,8 @@ sp: stackpointer
 port map(
     clk     => clk,
     reset   => cpu_reset,
-    op_code => dec_sp_op,     
-    enable_sp  => dec_sp_enable,
+    op_code => mux_dec_br_sp_op_code,     
+    enable_sp  => mux_dec_br_sp_enable,
     addr    => sp_dm_addr
 );
 
@@ -560,5 +567,10 @@ mux_rf_dec_alu_opB <= rf_alu_opB when dec_alu_immediate = '0' else dec_immediate
 
 --MUXing branching controller and z_addr 
 mux_rf_br_dm <= br_mux_z_br_value when br_mux_rf_br_enable = '1' else rf_alu_opA;
+
+-- SP
+-- MUXing between dec and br for sp
+mux_dec_br_sp_enable <= dec_sp_enable when mux_br_sp_enable = '0' else br_sp_enable;
+mux_dec_br_sp_op_code <= dec_sp_op when mux_br_sp_enable = '0' else br_sp_op_code;
 
 end Behavioral;

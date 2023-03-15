@@ -50,8 +50,6 @@ entity decoder is
     immediate_value     : out std_logic_vector(7 downto 0) := (others => '0');
     w_e_dm              : out std_logic;
     mux_alu_dm_select   : out std_logic;
-    pc_override         : out std_logic;
-    pc_override_offset  : out std_logic_vector(11 downto 0);
     sreg_override       : out std_logic;
     sreg_override_value : out std_logic_vector(7 downto 0);
     sp_op               : out std_logic;        --stackpointer operation type (increment(1) or decrement(0))
@@ -82,11 +80,9 @@ begin
         immediate_value <= (others => '0');
         w_e_dm <= '0';
         mux_alu_dm_select <= '0';
-        pc_override_offset <= (others => '0');
         OP_CODE <= (others => '0');
         sreg_override <= '0';
         sreg_override_value <= (others => '0');
-        pc_override <= '0';
         sp_op <= '0';
         sp_addr_enable <= '0';
         br_enable <= '0';
@@ -126,11 +122,6 @@ begin
                     --RET    
                     when "1001010100001000" =>
                         dbg_op_code <= op_ret;
-                        --w_e_dm <= '1';
-                        --dbg_op_code <= op_push;
-                        --sp_op <= '1';      --dec the stackpointer
-                        --sp_addr_enable <= '1';
-                        
                         
                         br_instr <= Instr(15 downto 0);
                         br_enable <= '1';
@@ -281,20 +272,16 @@ begin
                         case Instr(11 downto 10) is
                             --BRBS
                             when "00" =>
-                                alu_op_code <= op_nop;
-                                OP_CODE <= op_nop;
+                                --alu_op_code <= op_nop;
+                                --OP_CODE <= op_nop;
                                 
                                 br_instr <= Instr(15 downto 0);
                                 br_enable <= '1';
 
                             --BRBC
-                            when "01" =>
-                                dbg_op_code <= "0000"&op_brbc;
-                                alu_op_code <= op_brbc;
-                                OP_CODE <= op_brbc;
-                                alu_immediate <= '1';
-                                immediate_value <= "00000"&Instr(2 downto 0);    --00000sss  
-                                pc_override_offset <= "00000"&Instr(9 downto 3);
+                            when "01" =>                              
+                                br_instr <= Instr(15 downto 0);
+                                br_enable <= '1';
 
                             when others => null;
                         end case;
@@ -377,27 +364,13 @@ begin
 
                     --RJMP
                     when "1100" =>
-                        --pc_override_offset <= Instr(11 downto 0);
-                        --dbg_op_code <= op_rjmp;
-                        --pc_override <= '1';
-                        
                         br_instr <= Instr(15 downto 0);
                         br_enable <= '1';
 
                     --RCALL
                     when "1101" =>
-                        --dbg_op_code <= op_nop;
-                        --pc_override_offset <= Instr(11 downto 0);
-                        --alu_op_code <= op_nop;
-                        --OP_CODE <= op_nop;
-                        
-                        -- save pc + 1 on stack:
-                        --addr_opa <= Instr(8 downto 4);
                         w_e_dm <= '1';
-                        dbg_op_code <= op_push;
-                        --sp_op <= '1';      --dec the stackpointer
                         sp_addr_enable <= '1';
-                        
                         
                         br_instr <= Instr(15 downto 0);
                         br_enable <= '1';
