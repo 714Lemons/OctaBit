@@ -1,0 +1,31 @@
+Vivado Simulator v2021.1
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto 3aa7d55ed11646698b6a1068b45149b1 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot toplevel_tb_behaviour_cfg_behav xil_defaultlib.toplevel_tb_behaviour_cfg -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.pkg_instrmem
+Compiling package xil_defaultlib.pkg_processor
+Compiling package xil_defaultlib.pkg_io
+Compiling architecture behavioral of entity xil_defaultlib.program_counter [program_counter_default]
+Compiling architecture behavioral of entity xil_defaultlib.program_memory [program_memory_default]
+Compiling architecture behavioral of entity xil_defaultlib.decoder [decoder_default]
+Compiling architecture behavioral of entity xil_defaultlib.register_file [register_file_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.status_registry [status_registry_default]
+Compiling architecture behavioral of entity xil_defaultlib.branch_controller [branch_controller_default]
+Compiling architecture behavioral of entity xil_defaultlib.z_address [z_address_default]
+Compiling architecture behavioral of entity xil_defaultlib.stackpointer [stackpointer_default]
+Compiling architecture behavioral of entity xil_defaultlib.data_memory_1024B [data_memory_1024b_default]
+Compiling architecture behavioral of entity xil_defaultlib.mem_mapped_io [mem_mapped_io_default]
+Compiling architecture behavioral of entity xil_defaultlib.seg_view_controller [seg_view_controller_default]
+Compiling architecture behavioral of entity xil_defaultlib.toplevel [toplevel_default]
+Compiling architecture behavioral of entity xil_defaultlib.toplevel_tb [toplevel_tb]
+Built simulation snapshot toplevel_tb_behaviour_cfg_behav

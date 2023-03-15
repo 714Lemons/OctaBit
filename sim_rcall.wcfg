@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="toplevel_tb_behaviour_cfg_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="pkg_instrmem" />
+            <top_module name="pkg_io" />
+            <top_module name="pkg_processor" />
+            <top_module name="toplevel_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="514.500 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,097.101 ns"></ZoomEndTime>
+      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="375"></NameColumnWidth>
+      <ValueColumnWidth column_width="251"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="42" />
+   <wvobject fp_name="/toplevel_tb/DUT/sp/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/sp/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/sp/op_code" type="logic">
+      <obj_property name="ElementShortName">op_code</obj_property>
+      <obj_property name="ObjectShortName">op_code</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/sp/enable_sp" type="logic">
+      <obj_property name="ElementShortName">enable_sp</obj_property>
+      <obj_property name="ObjectShortName">enable_sp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/sp/addr" type="array">
+      <obj_property name="ElementShortName">addr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/sp/CURR" type="array">
+      <obj_property name="ElementShortName">CURR[9:0]</obj_property>
+      <obj_property name="ObjectShortName">CURR[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/sp/LAST" type="array">
+      <obj_property name="ElementShortName">LAST[9:0]</obj_property>
+      <obj_property name="ObjectShortName">LAST[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pm/addr" type="array">
+      <obj_property name="ElementShortName">addr[8:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pm/instr" type="array">
+      <obj_property name="ElementShortName">instr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">instr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/sreg_status" type="array">
+      <obj_property name="ElementShortName">sreg_status[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sreg_status[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/branch_instr" type="array">
+      <obj_property name="ElementShortName">branch_instr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">branch_instr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/branch_enable" type="logic">
+      <obj_property name="ElementShortName">branch_enable</obj_property>
+      <obj_property name="ObjectShortName">branch_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/current_pc" type="array">
+      <obj_property name="ElementShortName">current_pc[8:0]</obj_property>
+      <obj_property name="ObjectShortName">current_pc[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/override_enable" type="logic">
+      <obj_property name="ElementShortName">override_enable</obj_property>
+      <obj_property name="ObjectShortName">override_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/offset" type="array">
+      <obj_property name="ElementShortName">offset[11:0]</obj_property>
+      <obj_property name="ObjectShortName">offset[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/dm_value" type="array">
+      <obj_property name="ElementShortName">dm_value[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dm_value[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/dm_data" type="array">
+      <obj_property name="ElementShortName">dm_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dm_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/mux_alu_dm_select" type="logic">
+      <obj_property name="ElementShortName">mux_alu_dm_select</obj_property>
+      <obj_property name="ObjectShortName">mux_alu_dm_select</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/mux_alu_dm_data" type="array">
+      <obj_property name="ElementShortName">mux_alu_dm_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">mux_alu_dm_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/hold_pc" type="logic">
+      <obj_property name="ElementShortName">hold_pc</obj_property>
+      <obj_property name="ObjectShortName">hold_pc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/enable_mux_rf_pc" type="logic">
+      <obj_property name="ElementShortName">enable_mux_rf_pc</obj_property>
+      <obj_property name="ObjectShortName">enable_mux_rf_pc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/sp_op" type="logic">
+      <obj_property name="ElementShortName">sp_op</obj_property>
+      <obj_property name="ObjectShortName">sp_op</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/holding" type="logic">
+      <obj_property name="ElementShortName">holding</obj_property>
+      <obj_property name="ObjectShortName">holding</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/stored_pc" type="array">
+      <obj_property name="ElementShortName">stored_pc[8:0]</obj_property>
+      <obj_property name="ObjectShortName">stored_pc[8:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/br_controller/tmp" type="array">
+      <obj_property name="ElementShortName">tmp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/dm/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/dm/write_enable" type="logic">
+      <obj_property name="ElementShortName">write_enable</obj_property>
+      <obj_property name="ObjectShortName">write_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/dm/z_addr" type="array">
+      <obj_property name="ElementShortName">z_addr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">z_addr[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/dm/z_data_in" type="array">
+      <obj_property name="ElementShortName">z_data_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">z_data_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/dm/data" type="array">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/dm/DATA_MEM" type="array">
+      <obj_property name="ElementShortName">DATA_MEM[1023:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">DATA_MEM[1023:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/dec_sp_enable" type="logic">
+      <obj_property name="ElementShortName">dec_sp_enable</obj_property>
+      <obj_property name="ObjectShortName">dec_sp_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/rf/DATA" type="array">
+      <obj_property name="ElementShortName">DATA[31:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">DATA[31:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pc/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pc/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pc/override_enable" type="logic">
+      <obj_property name="ElementShortName">override_enable</obj_property>
+      <obj_property name="ObjectShortName">override_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pc/offset" type="array">
+      <obj_property name="ElementShortName">offset[11:0]</obj_property>
+      <obj_property name="ObjectShortName">offset[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pc/hold" type="logic">
+      <obj_property name="ElementShortName">hold</obj_property>
+      <obj_property name="ObjectShortName">hold</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pc/addr" type="array">
+      <obj_property name="ElementShortName">addr[8:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toplevel_tb/DUT/pc/PC_CNT" type="array">
+      <obj_property name="ElementShortName">PC_CNT[8:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_CNT[8:0]</obj_property>
+   </wvobject>
+</wave_config>
