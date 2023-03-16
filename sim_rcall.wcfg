@@ -13,15 +13,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="514.500 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,097.101 ns"></ZoomEndTime>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="817.734 ns"></ZoomEndTime>
       <Cursor1Time time="1,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="375"></NameColumnWidth>
-      <ValueColumnWidth column_width="251"></ValueColumnWidth>
+      <ValueColumnWidth column_width="243"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="42" />
+   <WVObjectSize size="41" />
    <wvobject fp_name="/toplevel_tb/DUT/sp/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -118,10 +118,6 @@
       <obj_property name="ElementShortName">sp_op</obj_property>
       <obj_property name="ObjectShortName">sp_op</obj_property>
    </wvobject>
-   <wvobject fp_name="/toplevel_tb/DUT/br_controller/holding" type="logic">
-      <obj_property name="ElementShortName">holding</obj_property>
-      <obj_property name="ObjectShortName">holding</obj_property>
-   </wvobject>
    <wvobject fp_name="/toplevel_tb/DUT/br_controller/stored_pc" type="array">
       <obj_property name="ElementShortName">stored_pc[8:0]</obj_property>
       <obj_property name="ObjectShortName">stored_pc[8:0]</obj_property>
@@ -154,6 +150,7 @@
    <wvobject fp_name="/toplevel_tb/DUT/dm/DATA_MEM" type="array">
       <obj_property name="ElementShortName">DATA_MEM[1023:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">DATA_MEM[1023:0][7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/toplevel_tb/DUT/dec_sp_enable" type="logic">
       <obj_property name="ElementShortName">dec_sp_enable</obj_property>

@@ -63,7 +63,7 @@ signal cpu_reset: std_logic;
 signal pc_pm_addr: std_logic_vector(8 downto 0); -- addresss for program memory instruction
 
 -- Program Memory (PM)
-signal pm_dec_instr: std_logic_vector(15 downto 0); -- instruction for decoder
+signal pm_instr_out: std_logic_vector(15 downto 0); -- instruction for decoder
 
 -- Decoder
 signal dec_rf_addr_opA          : std_logic_vector(4 downto 0);
@@ -84,6 +84,35 @@ signal dec_sp_op                : std_logic;
 signal dec_sp_enable            : std_logic;
 signal dec_br_instr             : std_logic_vector(15 downto 0);
 signal dec_br_enable            : std_logic;
+
+-- decoder pipeline
+signal pip_dec_rf_addr_opA          : std_logic_vector(4 downto 0);
+signal pip_dec_rf_addr_opB          : std_logic_vector(4 downto 0);
+signal pip_dec_alu_op_code          : std_logic_vector(3 downto 0);
+signal pip_dec_rf_write_enable      : std_logic;
+signal pip_dec_sreg_write_enable    : std_logic_vector(7 downto 0);
+signal pip_dec_rf_immediate         : std_logic;
+signal pip_dec_alu_immediate        : std_logic;
+signal pip_dec_immediate_value      : std_logic_vector(7 downto 0);
+signal pip_dec_dm_write_enable      : std_logic;
+signal pip_dec_mux_select_alu_dm    : std_logic;
+signal pip_dec_pc_override_enable   : std_logic;
+signal pip_dec_pc_override_offset   : std_logic_vector(11 downto 0);
+signal pip_dec_sreg_override_enable : std_logic;
+signal pip_dec_sreg_override_value  : std_logic_vector(7 downto 0);
+signal pip_dec_sp_op                : std_logic;
+signal pip_dec_sp_enable            : std_logic;
+-- br 
+signal pip_br_dm_value             : std_logic_vector(7 downto 0);
+signal pip_br_sp_op                : std_logic;
+signal pip_br_sp_enable            : std_logic;
+signal pip_mux_br_sp_enable        : std_logic;
+signal pip_br_mux_alu_dm_select    : std_logic;
+signal pip_br_sp_op_code : std_logic;
+signal pip_br_mux_rf_br_enable       : std_logic;
+
+signal pip_br_mux_z_br_value : std_logic_vector(7 downto 0);
+signal pip_br_mux_select_alu_dm : std_logic;
 
 -- Register File (RF)
 signal rf_alu_opA : std_logic_vector(7 downto 0);
@@ -150,6 +179,14 @@ signal mux_dec_br_sp_enable : std_logic;
 signal mux_dec_br_sp_op_code : std_logic;
 
 
+-- Pipelines
+-- PIP Fetch 
+signal pip_fetch_pm_out : std_logic_vector(15 downto 0);
+
+-- PIP Decode 
+
+-- PIP Execute 
+
 -- _________________________________________ COMPONENTS _________________________________________________
 
 component program_counter is
@@ -169,6 +206,16 @@ component program_memory is
     addr    : in std_logic_vector(8 downto 0);
     
     instr   : out std_logic_vector(15 downto 0)
+    );
+end component;
+
+component pip_fetch is
+    port (
+    clk     : in std_logic;
+    reset   : in std_logic;
+    pm_in   : in std_logic_vector(15 downto 0);
+    
+    pip_pm_out : out std_logic_vector(15 downto 0) 
     );
 end component;
 
@@ -198,6 +245,74 @@ component decoder is
     br_instr    : out std_logic_vector(15 downto 0);
     br_enable   : out std_logic
     );
+end component;
+
+component pip_decode is
+    port (
+    -- after: br, decoder
+    -- before: sreg, dm, rf, memory_mapped, seg_view_controller, sp, alu 
+    clk                 : in std_logic;
+    
+    dec_rf_addr_opA          : in std_logic_vector(4 downto 0);
+    dec_rf_addr_opB          : in std_logic_vector(4 downto 0);
+    dec_alu_op_code          : in std_logic_vector(3 downto 0);
+    dec_rf_write_enable      : in std_logic;
+    dec_sreg_write_enable    : in std_logic_vector(7 downto 0);
+    dec_rf_immediate         : in std_logic;
+    dec_alu_immediate        : in std_logic;
+    dec_immediate_value      : in std_logic_vector(7 downto 0);
+    dec_dm_write_enable      : in std_logic;
+    dec_mux_select_alu_dm    : in std_logic;
+    dec_pc_override_enable   : in std_logic;
+    dec_pc_override_offset   : in std_logic_vector(11 downto 0);
+    dec_sreg_override_enable : in std_logic;
+    dec_sreg_override_value  : in std_logic_vector(7 downto 0);
+    dec_sp_op                : in std_logic;
+    dec_sp_enable            : in std_logic;
+    
+    -- br:
+    -- dm_value, enable_mux_rf_pc -> mux_rf_br_dm
+    -- override_enable, offset, hold_pc -> feed forward? direct?
+    -- sp_op, sp_enable, br_sp_enable, mux_alu_dm_select
+
+    br_mux_z_br_value        : in std_logic_vector(7 downto 0);
+    br_mux_select_alu_dm     : in std_logic;
+    br_mux_rf_br_enable      : in std_logic;
+    mux_br_sp_enable         : in std_logic;
+    br_sp_op_code            : in std_logic;
+    br_sp_enable             : in std_logic;
+    
+    -- out  
+    pip_dec_rf_addr_opA          : out std_logic_vector(4 downto 0);
+    pip_dec_rf_addr_opB          : out std_logic_vector(4 downto 0);
+    pip_dec_alu_op_code          : out std_logic_vector(3 downto 0);
+    pip_dec_rf_write_enable      : out std_logic;
+    pip_dec_sreg_write_enable    : out std_logic_vector(7 downto 0);
+    pip_dec_rf_immediate         : out std_logic;
+    pip_dec_alu_immediate        : out std_logic;
+    pip_dec_immediate_value      : out std_logic_vector(7 downto 0);
+    pip_dec_dm_write_enable      : out std_logic;
+    pip_dec_mux_select_alu_dm    : out std_logic;
+    pip_dec_pc_override_enable   : out std_logic;
+    pip_dec_pc_override_offset   : out std_logic_vector(11 downto 0);
+    pip_dec_sreg_override_enable : out std_logic;
+    pip_dec_sreg_override_value  : out std_logic_vector(7 downto 0);
+    pip_dec_sp_op                : out std_logic;
+    pip_dec_sp_enable            : out std_logic;
+    
+    -- br:
+    -- dm_value, enable_mux_rf_pc -> mux_rf_br_dm
+    -- override_enable, offset, hold_pc -> feed forward? direct?
+    -- sp_op, sp_enable, br_sp_enable, mux_alu_dm_select
+    pip_br_mux_z_br_value        : in std_logic_vector(7 downto 0);
+    pip_br_mux_select_alu_dm     : in std_logic;
+    pip_br_mux_rf_br_enable      : in std_logic;
+    pip_mux_br_sp_enable         : in std_logic;
+    pip_br_sp_op_code            : in std_logic;
+    pip_br_sp_enable             : in std_logic
+        
+    );
+
 end component;
 
 component register_file is
@@ -365,13 +480,22 @@ port map(
     addr => pc_pm_addr,
     
     -- out:
-    instr => pm_dec_instr
+    instr => pm_instr_out
+);
+
+pip_fetch_reg: pip_fetch
+port map(
+    clk => clk,
+    reset => cpu_reset,
+    pm_in => pm_instr_out,
+    
+    pip_pm_out => pip_fetch_pm_out
 );
 
 dec: decoder
 port map(
     -- in:
-    instr => pm_dec_instr,
+    instr => pip_fetch_pm_out,
     
     -- out:
     addr_opa            => dec_rf_addr_opA,
@@ -395,6 +519,70 @@ port map(
     br_instr            => dec_br_instr,
     br_enable           => dec_br_enable
     
+);
+
+pip_dec: pip_decode
+port map(
+    -- in:
+    clk => clk,
+    dec_rf_addr_opA          => dec_rf_addr_opA,
+    dec_rf_addr_opB          => dec_rf_addr_opB,
+    dec_alu_op_code          => dec_alu_op_code,
+    dec_rf_write_enable      => dec_rf_write_enable,
+    dec_sreg_write_enable    => dec_sreg_write_enable, 
+    dec_rf_immediate         => dec_rf_immediate,
+    dec_alu_immediate        => dec_alu_immediate,
+    dec_immediate_value      => dec_immediate_value,
+    dec_dm_write_enable      => dec_dm_write_enable,
+    dec_mux_select_alu_dm    => dec_mux_select_alu_dm,
+    dec_pc_override_enable   => dec_pc_override_enable,
+    dec_pc_override_offset   => dec_pc_override_offset,
+    dec_sreg_override_enable => dec_sreg_override_enable,
+    dec_sreg_override_value  => dec_sreg_override_value,
+    dec_sp_op                => dec_sp_op,
+    dec_sp_enable            => dec_sp_enable,
+    
+    -- br:
+    -- dm_value, enable_mux_rf_pc -> mux_rf_br_dm
+    -- override_enable, offset, hold_pc -> feed forward? direct?
+    -- sp_op, sp_enable, br_sp_enable, mux_alu_dm_select
+    br_mux_z_br_value        => br_mux_z_br_value,
+    br_mux_select_alu_dm     => br_mux_select_alu_dm,
+    br_mux_rf_br_enable      => br_mux_rf_br_enable,
+    mux_br_sp_enable         => mux_br_sp_enable,
+    br_sp_op_code            => br_sp_op_code,
+    br_sp_enable             => br_sp_enable,
+	
+	-- out:
+    -- out  
+    pip_dec_rf_addr_opA          => pip_dec_rf_addr_opA,
+    pip_dec_rf_addr_opB          => pip_dec_rf_addr_opB,
+    pip_dec_alu_op_code          => pip_dec_alu_op_code,
+    pip_dec_rf_write_enable      => pip_dec_rf_write_enable,
+    pip_dec_sreg_write_enable    => pip_dec_sreg_write_enable,
+    pip_dec_rf_immediate         => pip_dec_rf_immediate,
+    pip_dec_alu_immediate        => pip_dec_alu_immediate,
+    pip_dec_immediate_value      => pip_dec_immediate_value,
+    pip_dec_dm_write_enable      => pip_dec_dm_write_enable,
+    pip_dec_mux_select_alu_dm    => pip_dec_mux_select_alu_dm,
+    pip_dec_pc_override_enable   => pip_dec_pc_override_enable,
+    pip_dec_pc_override_offset   => pip_dec_pc_override_offset,
+    pip_dec_sreg_override_enable => pip_dec_sreg_override_enable,
+    pip_dec_sreg_override_value  => pip_dec_sreg_override_value,
+    pip_dec_sp_op                => pip_dec_sp_op,
+    pip_dec_sp_enable            => pip_dec_sp_enable,
+    
+    -- br:
+    -- dm_value, enable_mux_rf_pc -> mux_rf_br_dm
+    -- override_enable, offset, hold_pc -> feed forward? direct?
+    -- sp_op, sp_enable, br_sp_enable, mux_alu_dm_select
+
+    pip_br_mux_z_br_value        => pip_br_mux_z_br_value,
+    pip_br_mux_select_alu_dm     => pip_br_mux_select_alu_dm,
+    pip_mux_br_sp_enable    => pip_mux_br_sp_enable,
+	pip_br_sp_op_code  => pip_br_sp_op_code,
+	pip_br_sp_enable => pip_br_sp_enable,
+	pip_br_mux_rf_br_enable => pip_br_mux_rf_br_enable
 );
 
 rf: register_file

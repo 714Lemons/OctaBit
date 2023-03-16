@@ -17,31 +17,34 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 18564
+INFO: [Synth 8-7075] Helper process launched with PID 2036
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'toplevel' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:55]
-INFO: [Synth 8-3491] module 'program_counter' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_counter.vhd:35' bound to instance 'pc' of component 'program_counter' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:349]
+INFO: [Synth 8-3491] module 'program_counter' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_counter.vhd:35' bound to instance 'pc' of component 'program_counter' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:367]
 INFO: [Synth 8-638] synthesizing module 'program_counter' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_counter.vhd:47]
 INFO: [Synth 8-256] done synthesizing module 'program_counter' (1#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_counter.vhd:47]
-INFO: [Synth 8-3491] module 'program_memory' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_memory.vhd:38' bound to instance 'pm' of component 'program_memory' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:362]
+INFO: [Synth 8-3491] module 'program_memory' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_memory.vhd:38' bound to instance 'pm' of component 'program_memory' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:380]
 INFO: [Synth 8-638] synthesizing module 'program_memory' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_memory.vhd:46]
 INFO: [Synth 8-256] done synthesizing module 'program_memory' (2#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_memory.vhd:46]
-INFO: [Synth 8-3491] module 'decoder' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/decoder.vhd:37' bound to instance 'dec' of component 'decoder' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:371]
+INFO: [Synth 8-3491] module 'pip_fetch' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/pip_fetch.vhd:34' bound to instance 'pip_fetch_reg' of component 'pip_fetch' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:389]
+INFO: [Synth 8-638] synthesizing module 'pip_fetch' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/pip_fetch.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'pip_fetch' (3#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/pip_fetch.vhd:44]
+INFO: [Synth 8-3491] module 'decoder' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/decoder.vhd:37' bound to instance 'dec' of component 'decoder' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:398]
 INFO: [Synth 8-638] synthesizing module 'decoder' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/decoder.vhd:64]
 INFO: [Synth 8-226] default block is never used [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/decoder.vhd:169]
-INFO: [Synth 8-256] done synthesizing module 'decoder' (3#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/decoder.vhd:64]
-INFO: [Synth 8-3491] module 'register_file' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/register_file.vhd:34' bound to instance 'rf' of component 'register_file' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:400]
+INFO: [Synth 8-256] done synthesizing module 'decoder' (4#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/decoder.vhd:64]
+INFO: [Synth 8-3491] module 'register_file' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/register_file.vhd:34' bound to instance 'rf' of component 'register_file' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:427]
 INFO: [Synth 8-638] synthesizing module 'register_file' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/register_file.vhd:48]
-INFO: [Synth 8-256] done synthesizing module 'register_file' (4#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/register_file.vhd:48]
-INFO: [Synth 8-3491] module 'alu' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/alu.vhd:37' bound to instance 'alu0' of component 'alu' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:416]
+INFO: [Synth 8-256] done synthesizing module 'register_file' (5#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/register_file.vhd:48]
+INFO: [Synth 8-3491] module 'alu' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/alu.vhd:37' bound to instance 'alu0' of component 'alu' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:443]
 INFO: [Synth 8-638] synthesizing module 'alu' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/alu.vhd:50]
-INFO: [Synth 8-256] done synthesizing module 'alu' (5#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/alu.vhd:50]
-INFO: [Synth 8-3491] module 'status_registry' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/status_registry.vhd:34' bound to instance 'sreg' of component 'status_registry' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:431]
+INFO: [Synth 8-256] done synthesizing module 'alu' (6#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/alu.vhd:50]
+INFO: [Synth 8-3491] module 'status_registry' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/status_registry.vhd:34' bound to instance 'sreg' of component 'status_registry' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:458]
 INFO: [Synth 8-638] synthesizing module 'status_registry' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/status_registry.vhd:47]
-INFO: [Synth 8-256] done synthesizing module 'status_registry' (6#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/status_registry.vhd:47]
-INFO: [Synth 8-3491] module 'branch_controller' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:34' bound to instance 'br_controller' of component 'branch_controller' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:445]
+INFO: [Synth 8-256] done synthesizing module 'status_registry' (7#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/status_registry.vhd:47]
+INFO: [Synth 8-3491] module 'branch_controller' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:34' bound to instance 'br_controller' of component 'branch_controller' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:472]
 INFO: [Synth 8-638] synthesizing module 'branch_controller' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:65]
 WARNING: [Synth 8-614] signal 'branch_instr' is read in the process but is not in the sensitivity list [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:72]
 WARNING: [Synth 8-614] signal 'tmp' is read in the process but is not in the sensitivity list [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:72]
@@ -51,39 +54,39 @@ WARNING: [Synth 8-614] signal 'await_ret' is read in the process but is not in t
 WARNING: [Synth 8-614] signal 'dm_data' is read in the process but is not in the sensitivity list [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:72]
 WARNING: [Synth 8-614] signal 'sreg_status' is read in the process but is not in the sensitivity list [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:72]
 WARNING: [Synth 8-614] signal 'branch_enable' is read in the process but is not in the sensitivity list [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:72]
-INFO: [Synth 8-256] done synthesizing module 'branch_controller' (7#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:65]
-INFO: [Synth 8-3491] module 'z_address' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/z_address.vhd:34' bound to instance 'z_addr' of component 'z_address' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:475]
+INFO: [Synth 8-256] done synthesizing module 'branch_controller' (8#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:65]
+INFO: [Synth 8-3491] module 'z_address' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/z_address.vhd:34' bound to instance 'z_addr' of component 'z_address' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:502]
 INFO: [Synth 8-638] synthesizing module 'z_address' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/z_address.vhd:46]
-INFO: [Synth 8-256] done synthesizing module 'z_address' (8#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/z_address.vhd:46]
-INFO: [Synth 8-3491] module 'stackpointer' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/stackpointer.vhd:34' bound to instance 'sp' of component 'stackpointer' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:488]
+INFO: [Synth 8-256] done synthesizing module 'z_address' (9#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/z_address.vhd:46]
+INFO: [Synth 8-3491] module 'stackpointer' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/stackpointer.vhd:34' bound to instance 'sp' of component 'stackpointer' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:515]
 INFO: [Synth 8-638] synthesizing module 'stackpointer' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/stackpointer.vhd:45]
 INFO: [Synth 8-226] default block is never used [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/stackpointer.vhd:57]
-INFO: [Synth 8-256] done synthesizing module 'stackpointer' (9#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/stackpointer.vhd:45]
-INFO: [Synth 8-3491] module 'data_memory_1024B' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/data_memory_1024B.vhd:34' bound to instance 'dm' of component 'data_memory_1024B' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:497]
+INFO: [Synth 8-256] done synthesizing module 'stackpointer' (10#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/stackpointer.vhd:45]
+INFO: [Synth 8-3491] module 'data_memory_1024B' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/data_memory_1024B.vhd:34' bound to instance 'dm' of component 'data_memory_1024B' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:524]
 INFO: [Synth 8-638] synthesizing module 'data_memory_1024B' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/data_memory_1024B.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'data_memory_1024B' (10#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/data_memory_1024B.vhd:45]
-INFO: [Synth 8-3491] module 'mem_mapped_io' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/mem_mapped_io.vhd:36' bound to instance 'mem_mapped_io0' of component 'mem_mapped_io' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:506]
+INFO: [Synth 8-256] done synthesizing module 'data_memory_1024B' (11#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/data_memory_1024B.vhd:45]
+INFO: [Synth 8-3491] module 'mem_mapped_io' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/mem_mapped_io.vhd:36' bound to instance 'mem_mapped_io0' of component 'mem_mapped_io' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:533]
 INFO: [Synth 8-638] synthesizing module 'mem_mapped_io' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/mem_mapped_io.vhd:57]
-INFO: [Synth 8-256] done synthesizing module 'mem_mapped_io' (11#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/mem_mapped_io.vhd:57]
-INFO: [Synth 8-3491] module 'seg_view_controller' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/seg_view_controller.vhd:34' bound to instance 'seg_view_controller0' of component 'seg_view_controller' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:525]
+INFO: [Synth 8-256] done synthesizing module 'mem_mapped_io' (12#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/mem_mapped_io.vhd:57]
+INFO: [Synth 8-3491] module 'seg_view_controller' declared at 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/seg_view_controller.vhd:34' bound to instance 'seg_view_controller0' of component 'seg_view_controller' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:552]
 INFO: [Synth 8-638] synthesizing module 'seg_view_controller' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/seg_view_controller.vhd:51]
 INFO: [Synth 8-226] default block is never used [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/seg_view_controller.vhd:83]
 INFO: [Synth 8-226] default block is never used [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/seg_view_controller.vhd:108]
-INFO: [Synth 8-256] done synthesizing module 'seg_view_controller' (12#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/seg_view_controller.vhd:51]
-INFO: [Synth 8-256] done synthesizing module 'toplevel' (13#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:55]
+INFO: [Synth 8-256] done synthesizing module 'seg_view_controller' (13#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/seg_view_controller.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'toplevel' (14#1) [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd:55]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1135.504 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -94,26 +97,26 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/toplevel_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1135.504 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'seg_view_controller'
 WARNING: [Synth 8-327] inferring latch for variable 'tmp_reg' [C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/branch_controller.vhd:87]
@@ -132,7 +135,7 @@ WARNING: [Synth 8-327] inferring latch for variable 'sp_enable_reg' [C:/Users/Mo
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'seg_view_controller'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -151,6 +154,7 @@ Detailed RTL Component Info :
 	   2 Input      8 Bit         XORs := 1     
 	   2 Input      1 Bit         XORs := 2     
 +---Registers : 
+	               16 Bit    Registers := 1     
 	               10 Bit    Registers := 2     
 	                9 Bit    Registers := 1     
 	                8 Bit    Registers := 11    
@@ -217,7 +221,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -239,13 +243,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -266,7 +270,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -284,37 +288,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -327,47 +331,41 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+----------+------+
-|      |Cell      |Count |
-+------+----------+------+
-|1     |BUFG      |     1|
-|2     |CARRY4    |    19|
-|3     |LUT1      |     5|
-|4     |LUT2      |    13|
-|5     |LUT3      |    27|
-|6     |LUT4      |    12|
-|7     |LUT5      |    18|
-|8     |LUT6      |    29|
-|9     |RAM256X1S |    32|
-|10    |RAM32X1D  |     8|
-|11    |FDRE      |    63|
-|12    |FDSE      |    20|
-|13    |IBUF      |     4|
-|14    |OBUF      |    28|
-+------+----------+------+
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    16|
+|3     |LUT1   |     1|
+|4     |LUT2   |     2|
+|5     |LUT3   |     2|
+|6     |LUT4   |     1|
+|7     |LUT6   |     7|
+|8     |FDRE   |    35|
+|9     |IBUF   |     4|
+|10    |OBUF   |    28|
++------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1135.504 ; gain = 0.000
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:24 . Memory (MB): peak = 1136.188 ; gain = 0.000
-Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:23 . Memory (MB): peak = 1135.504 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1135.504 ; gain = 0.000
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1136.188 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 59 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1135.504 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 16 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1135.504 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 40 instances were transformed.
-  RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 32 instances
-  RAM32X1D => RAM32X1D (RAMD32(x2)): 8 instances
+No Unisim elements were transformed.
 
-Synth Design complete, checksum: 7a17128f
+Synth Design complete, checksum: 5f76990c
 INFO: [Common 17-83] Releasing license: Synthesis
-59 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
+62 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1136.188 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1135.504 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.runs/synth_1/toplevel.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Mar 15 13:34:19 2023...
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 15 14:54:38 2023...

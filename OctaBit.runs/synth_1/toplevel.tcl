@@ -97,6 +97,7 @@ read_vhdl -library xil_defaultlib {
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/decoder.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/imports/new/pkg_io.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/mem_mapped_io.vhd
+  C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/pip_fetch.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/imports/new/pkg_instrmem.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_counter.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_memory.vhd
