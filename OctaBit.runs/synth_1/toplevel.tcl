@@ -70,11 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param chipscope.maxJobs 3
-set_param synth.incrementalSynthesisCache C:/Users/Moritz/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-18556-DESKTOP-F0RAV2R/incrSyn
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -97,6 +92,7 @@ read_vhdl -library xil_defaultlib {
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/decoder.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/imports/new/pkg_io.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/mem_mapped_io.vhd
+  C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/pip_decode.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/pip_fetch.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/imports/new/pkg_instrmem.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/program_counter.vhd

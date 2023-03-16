@@ -76,8 +76,6 @@ signal dec_alu_immediate        : std_logic;
 signal dec_immediate_value      : std_logic_vector(7 downto 0);
 signal dec_dm_write_enable      : std_logic;
 signal dec_mux_select_alu_dm    : std_logic;
-signal dec_pc_override_enable   : std_logic;
-signal dec_pc_override_offset   : std_logic_vector(11 downto 0);
 signal dec_sreg_override_enable : std_logic;
 signal dec_sreg_override_value  : std_logic_vector(7 downto 0);
 signal dec_sp_op                : std_logic;
@@ -96,8 +94,6 @@ signal pip_dec_alu_immediate        : std_logic;
 signal pip_dec_immediate_value      : std_logic_vector(7 downto 0);
 signal pip_dec_dm_write_enable      : std_logic;
 signal pip_dec_mux_select_alu_dm    : std_logic;
-signal pip_dec_pc_override_enable   : std_logic;
-signal pip_dec_pc_override_offset   : std_logic_vector(11 downto 0);
 signal pip_dec_sreg_override_enable : std_logic;
 signal pip_dec_sreg_override_value  : std_logic_vector(7 downto 0);
 signal pip_dec_sp_op                : std_logic;
@@ -263,8 +259,6 @@ component pip_decode is
     dec_immediate_value      : in std_logic_vector(7 downto 0);
     dec_dm_write_enable      : in std_logic;
     dec_mux_select_alu_dm    : in std_logic;
-    dec_pc_override_enable   : in std_logic;
-    dec_pc_override_offset   : in std_logic_vector(11 downto 0);
     dec_sreg_override_enable : in std_logic;
     dec_sreg_override_value  : in std_logic_vector(7 downto 0);
     dec_sp_op                : in std_logic;
@@ -293,8 +287,6 @@ component pip_decode is
     pip_dec_immediate_value      : out std_logic_vector(7 downto 0);
     pip_dec_dm_write_enable      : out std_logic;
     pip_dec_mux_select_alu_dm    : out std_logic;
-    pip_dec_pc_override_enable   : out std_logic;
-    pip_dec_pc_override_offset   : out std_logic_vector(11 downto 0);
     pip_dec_sreg_override_enable : out std_logic;
     pip_dec_sreg_override_value  : out std_logic_vector(7 downto 0);
     pip_dec_sp_op                : out std_logic;
@@ -304,12 +296,12 @@ component pip_decode is
     -- dm_value, enable_mux_rf_pc -> mux_rf_br_dm
     -- override_enable, offset, hold_pc -> feed forward? direct?
     -- sp_op, sp_enable, br_sp_enable, mux_alu_dm_select
-    pip_br_mux_z_br_value        : in std_logic_vector(7 downto 0);
-    pip_br_mux_select_alu_dm     : in std_logic;
-    pip_br_mux_rf_br_enable      : in std_logic;
-    pip_mux_br_sp_enable         : in std_logic;
-    pip_br_sp_op_code            : in std_logic;
-    pip_br_sp_enable             : in std_logic
+    pip_br_mux_z_br_value        : out std_logic_vector(7 downto 0);
+    pip_br_mux_select_alu_dm     : out std_logic;
+    pip_br_mux_rf_br_enable      : out std_logic;
+    pip_mux_br_sp_enable         : out std_logic;
+    pip_br_sp_op_code            : out std_logic;
+    pip_br_sp_enable             : out std_logic
         
     );
 
@@ -535,17 +527,12 @@ port map(
     dec_immediate_value      => dec_immediate_value,
     dec_dm_write_enable      => dec_dm_write_enable,
     dec_mux_select_alu_dm    => dec_mux_select_alu_dm,
-    dec_pc_override_enable   => dec_pc_override_enable,
-    dec_pc_override_offset   => dec_pc_override_offset,
     dec_sreg_override_enable => dec_sreg_override_enable,
     dec_sreg_override_value  => dec_sreg_override_value,
     dec_sp_op                => dec_sp_op,
     dec_sp_enable            => dec_sp_enable,
     
     -- br:
-    -- dm_value, enable_mux_rf_pc -> mux_rf_br_dm
-    -- override_enable, offset, hold_pc -> feed forward? direct?
-    -- sp_op, sp_enable, br_sp_enable, mux_alu_dm_select
     br_mux_z_br_value        => br_mux_z_br_value,
     br_mux_select_alu_dm     => br_mux_select_alu_dm,
     br_mux_rf_br_enable      => br_mux_rf_br_enable,
@@ -565,8 +552,7 @@ port map(
     pip_dec_immediate_value      => pip_dec_immediate_value,
     pip_dec_dm_write_enable      => pip_dec_dm_write_enable,
     pip_dec_mux_select_alu_dm    => pip_dec_mux_select_alu_dm,
-    pip_dec_pc_override_enable   => pip_dec_pc_override_enable,
-    pip_dec_pc_override_offset   => pip_dec_pc_override_offset,
+
     pip_dec_sreg_override_enable => pip_dec_sreg_override_enable,
     pip_dec_sreg_override_value  => pip_dec_sreg_override_value,
     pip_dec_sp_op                => pip_dec_sp_op,
@@ -577,22 +563,22 @@ port map(
     -- override_enable, offset, hold_pc -> feed forward? direct?
     -- sp_op, sp_enable, br_sp_enable, mux_alu_dm_select
 
-    pip_br_mux_z_br_value        => pip_br_mux_z_br_value,
-    pip_br_mux_select_alu_dm     => pip_br_mux_select_alu_dm,
-    pip_mux_br_sp_enable    => pip_mux_br_sp_enable,
-	pip_br_sp_op_code  => pip_br_sp_op_code,
-	pip_br_sp_enable => pip_br_sp_enable,
-	pip_br_mux_rf_br_enable => pip_br_mux_rf_br_enable
+    pip_br_mux_z_br_value      => pip_br_mux_z_br_value,
+    pip_br_mux_select_alu_dm   => pip_br_mux_select_alu_dm,
+    pip_mux_br_sp_enable       => pip_mux_br_sp_enable,
+	pip_br_sp_op_code          => pip_br_sp_op_code,
+	pip_br_sp_enable           => pip_br_sp_enable,
+	pip_br_mux_rf_br_enable    => pip_br_mux_rf_br_enable
 );
 
 rf: register_file
 port map(
     -- in:
     clk         => clk,
-    addr_opa    => dec_rf_addr_opA,
-    addr_opb    => dec_rf_addr_opB,
-    write_addr  => dec_rf_addr_opA,
-    w_e_rf      => dec_rf_write_enable,
+    addr_opa    => pip_dec_rf_addr_opA,
+    addr_opb    => pip_dec_rf_addr_opB,
+    write_addr  => pip_dec_rf_addr_opA,
+    w_e_rf      => pip_dec_rf_write_enable,
     data_in     => mux_im_rf_data,
     
     -- out:
@@ -604,7 +590,7 @@ port map(
 alu0: alu
 port map(
     -- in:
-    opcode      => dec_alu_op_code,
+    opcode      => pip_dec_alu_op_code,
     opa         => rf_alu_opA,
     opb         => mux_rf_dec_alu_opB,
     status_in   => sreg_alu_status,
@@ -621,10 +607,10 @@ port map(
     -- in:
     clk             => clk,
     reset           => cpu_reset,
-    w_e_sreg        => dec_sreg_write_enable,
+    w_e_sreg        => pip_dec_sreg_write_enable,
     status_in       => alu_sreg_status,
-    override        => dec_sreg_override_enable,
-    override_value  => dec_sreg_override_value, 
+    override        => pip_dec_sreg_override_enable,
+    override_value  => pip_dec_sreg_override_value, 
     
     -- out:
     status_out => sreg_alu_status
@@ -685,7 +671,7 @@ port map(
 dm: data_memory_1024B
 port map(
     clk             => clk,        
-    write_enable    => dec_dm_write_enable,
+    write_enable    => pip_dec_dm_write_enable,
     z_addr          => dm_z_addr,
     z_data_in       => mux_rf_br_dm, --rf_alu_opA,
     data            => dm_mux_data_out
@@ -694,7 +680,7 @@ port map(
 mem_mapped_io0: mem_mapped_io
 port map (
     clk         => clk,   
-    write_enable => dec_dm_write_enable,
+    write_enable => pip_dec_dm_write_enable,
     data        => rf_alu_opA,
     z_addr      => z_addr_out,
     portb       => led(7 downto 0),
@@ -748,17 +734,17 @@ port_for_btns <= "000"&btnR&btnU&btnD&btnL&btnC;
 mux_alu_dm_data <= dm_mux_data_out;
 
 --MUXing the data going into the rf
-mux_im_rf_data <= mux_alu_dm_data when dec_rf_immediate = '0' else dec_immediate_value;
+mux_im_rf_data <= mux_alu_dm_data when pip_dec_rf_immediate = '0' else pip_dec_immediate_value;
 
 --MUXing ALU's data_b between rf_data_b and decoder_immediate_Value
-mux_rf_dec_alu_opB <= rf_alu_opB when dec_alu_immediate = '0' else dec_immediate_value;
+mux_rf_dec_alu_opB <= rf_alu_opB when pip_dec_alu_immediate = '0' else pip_dec_immediate_value;
 
 --MUXing branching controller and z_addr 
-mux_rf_br_dm <= br_mux_z_br_value when br_mux_rf_br_enable = '1' else rf_alu_opA;
+mux_rf_br_dm <= pip_br_mux_z_br_value when pip_br_mux_rf_br_enable = '1' else rf_alu_opA;
 
 -- SP
 -- MUXing between dec and br for sp
-mux_dec_br_sp_enable <= dec_sp_enable when mux_br_sp_enable = '0' else br_sp_enable;
-mux_dec_br_sp_op_code <= dec_sp_op when mux_br_sp_enable = '0' else br_sp_op_code;
+mux_dec_br_sp_enable <= pip_dec_sp_enable when pip_mux_br_sp_enable = '0' else pip_br_sp_enable;
+mux_dec_br_sp_op_code <= pip_dec_sp_op when pip_mux_br_sp_enable = '0' else pip_br_sp_op_code;
 
 end Behavioral;
