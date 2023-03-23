@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 package pkg_processor is
 
@@ -34,5 +35,24 @@ package pkg_processor is
     constant op_pop     : std_logic_vector(7 downto 0) := "1000" & "0000";      -- pop a value from stack to register file
     constant op_ret     : std_logic_vector(7 downto 0) := "1001" & "0000";      -- return from subroutine
     constant op_rcall   : std_logic_vector(7 downto 0) := "1010" & "0000";      -- relative call of subroutine
+    
+        -- IO Flags
+    constant PORT_D_IN_ADDRES         : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#30#,10)); --0x30
+    constant PORT_C_IN_ADDRES         : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#33#,10)); --0x33
+    constant PORT_B_IN_ADDRES         : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#36#,10)); --0x36
+    constant PORT_C_OUT_ADDRES        : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#35#,10)); --0x35
+    constant PORT_B_OUT_ADDRES        : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#38#,10)); --0x38
+    constant SEGMENT_ENABLE_ADDRES    : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#40#,10)); --0x40
+    constant SEGMENT_0_ADDRES         : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#41#,10)); 
+    constant SEGMENT_1_ADDRES         : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#42#,10)); 
+    constant SEGMENT_2_ADDRES         : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#43#,10)); 
+    constant SEGMENT_3_ADDRES         : STD_LOGIC_VECTOR (9 downto 0) := STD_LOGIC_VECTOR(to_unsigned(16#44#,10)); 
+    
+    --SEGMENT STATE
+    constant SEGMENT_ALL_OFF    : STD_LOGIC_VECTOR(3 downto 0) := "0000";
+    constant SEGMENT_0          : STD_LOGIC_VECTOR(3 downto 0) := "0001";
+    constant SEGMENT_1          : STD_LOGIC_VECTOR(3 downto 0) := "0010";
+    constant SEGMENT_2          : STD_LOGIC_VECTOR(3 downto 0) := "0100";
+    constant SEGMENT_3          : STD_LOGIC_VECTOR(3 downto 0) := "1000";
 
 end pkg_processor;

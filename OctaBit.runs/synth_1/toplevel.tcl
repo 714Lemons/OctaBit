@@ -70,14 +70,17 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
+set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.cache/wt [current_project]
 set_property parent.project_path C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.xpr [current_project]
+set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property ip_output_repo c:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.cache/ip [current_project]
@@ -104,6 +107,11 @@ read_vhdl -library xil_defaultlib {
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/z_address.vhd
   C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/new/toplevel.vhd
 }
+read_ip -quiet C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

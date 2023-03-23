@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 08.03.2023 10:59:50
+-- Create Date: 10.07.2023 10:59:50
 -- Design Name: 
 -- Module Name: toplevel - Behavioral
 -- Project Name: 
@@ -35,7 +35,7 @@ use IEEE.numeric_std.all;
 entity toplevel is
     -- global ports
     Port (
-    clk  : in STD_LOGIC;
+    clk_in  : in STD_LOGIC;
     sw   : in std_logic_vector(15 downto 0);
     btnU : in STD_LOGIC;
     btnD : in STD_LOGIC;
@@ -47,17 +47,25 @@ entity toplevel is
     led  : out std_logic_vector(15 downto 0) := (others => '1');
     seg  : out std_logic_vector(6 downto 0) := (others => '1');
     an   : out std_logic_vector(3 downto 0) := (others => '0');
-    dp   : out std_logic := '1'
-         );
+    dp   : out std_logic := '1';
+    
+    PORT_C_IN : in STD_LOGIC_VECTOR(7 downto 0);
+    PORT_D_IN : in STD_LOGIC_VECTOR (4 downto 0);
+    PORT_B_IN : in STD_LOGIC_VECTOR (7 downto 0);
+    PORT_C_OUT: out STD_LOGIC_VECTOR(7 downto 0);
+    PORT_B_OUT: out STD_LOGIC_VECTOR(7 downto 0);
+    COMMON_ANODE : out STD_LOGIC_VECTOR(3 downto 0);
+    LED_CATHODES : out STD_LOGIC_VECTOR(7 downto 0)
+    );
          
 end toplevel;
 
 architecture Behavioral of toplevel is
 
 -- _________________________________________ SIGNALS _________________________________________________
-
+signal clk : std_logic;
 -- CPU
-signal cpu_reset: std_logic;
+signal cpu_reset : std_logic;
 
 -- Program Counter (PC)
 signal pc_pm_addr: std_logic_vector(8 downto 0); -- addresss for program memory instruction
@@ -184,6 +192,12 @@ signal pip_fetch_pm_out : std_logic_vector(15 downto 0);
 -- PIP Execute 
 
 -- _________________________________________ COMPONENTS _________________________________________________
+component clk_wiz_0
+    port (
+    clk_in1 : in std_logic;
+    clk_out1    : out std_logic
+    );
+end component;
 
 component program_counter is
     port (
@@ -452,6 +466,12 @@ end component;
 -- _________________________________________ Port Mapping _________________________________________________
 
 begin
+clk_wizard : clk_wiz_0
+port map(
+    clk_in1 => clk_in,
+    clk_out1 => clk
+);
+
 
 pc: program_counter
 port map(

@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Thu Mar 16 14:46:30 2023
-# Process ID: 15592
+# Start of session at: Thu Mar 23 15:54:15 2023
+# Process ID: 3168
 # Current directory: C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.runs/synth_1
 # Command line: vivado.exe -log toplevel.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source toplevel.tcl
 # Log file: C:/Users/Moritz/Documents/GitHub/OctaBit/OctaBit.runs/synth_1/toplevel.vds
