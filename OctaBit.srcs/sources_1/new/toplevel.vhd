@@ -35,7 +35,7 @@ use IEEE.numeric_std.all;
 entity toplevel is
     -- global ports
     Port (
-    clk  : in STD_LOGIC;
+    clk_in  : in STD_LOGIC;
     sw   : in std_logic_vector(15 downto 0);
     btnU : in STD_LOGIC;
     btnD : in STD_LOGIC;
@@ -58,6 +58,7 @@ architecture Behavioral of toplevel is
 
 -- CPU
 signal cpu_reset: std_logic;
+signal clk : std_logic;
 
 -- Program Counter (PC)
 signal pc_pm_addr: std_logic_vector(8 downto 0); -- addresss for program memory instruction
@@ -182,8 +183,19 @@ signal pip_fetch_pm_out : std_logic_vector(15 downto 0);
 -- PIP Decode 
 
 -- PIP Execute 
+signal pip_exec_sreg_write_enable : std_logic_vector(7 downto 0);
+signal pip_exec_alu_sreg_status : std_logic_vector(7 downto 0);
+signal pip_exec_sreg_override_enable : std_logic;
+signal pip_exec_sreg_override_value : std_logic_vector(7 downto 0);
 
 -- _________________________________________ COMPONENTS _________________________________________________
+component clk_wiz_0
+    Port (
+    clk_in  : in std_logic;
+    clk     : out std_logic
+    );
+end component;
+
 
 component program_counter is
     port (
@@ -303,6 +315,24 @@ component pip_decode is
     pip_br_sp_op_code            : out std_logic;
     pip_br_sp_enable             : out std_logic
         
+    );
+
+end component;
+
+component pip_execute is
+    port (
+    -- alu,dm mux 
+    clk : in std_logic;
+    pip_dec_sreg_write_enable       : in std_logic_vector(7 downto 0);
+    alu_sreg_status                 : in std_logic_vector(7 downto 0);
+    pip_dec_sreg_override_enable    : in std_logic;
+    pip_dec_sreg_override_value     : in std_logic_vector(7 downto 0);
+    
+    pip_exec_sreg_write_enable      : out std_logic_vector(7 downto 0);
+    pip_exec_alu_sreg_status        : out std_logic_vector(7 downto 0);
+    pip_exec_sreg_override_enable   : out std_logic;
+    pip_exec_sreg_override_value    : out std_logic_vector(7 downto 0)
+    
     );
 
 end component;
@@ -453,6 +483,12 @@ end component;
 
 begin
 
+clk_wizard : clk_wiz_0
+Port map(
+    clk_in => clk_in,
+    clk => clk
+);
+
 pc: program_counter
 port map(
     -- in:
@@ -599,7 +635,20 @@ port map(
     -- out:
     res         => alu_mux_dm_out,
     status_out  => alu_sreg_status
-    -- branch_test_result => open
+);
+
+pip_exec: pip_execute
+port map(
+    clk => clk,
+    pip_dec_sreg_write_enable       =>  pip_dec_sreg_write_enable,
+    alu_sreg_status                 =>  alu_sreg_status,
+    pip_dec_sreg_override_enable    =>  pip_dec_sreg_override_enable,
+    pip_dec_sreg_override_value     =>  pip_dec_sreg_override_value,
+    
+    pip_exec_sreg_write_enable      =>  pip_exec_sreg_write_enable,
+    pip_exec_alu_sreg_status        =>  pip_exec_alu_sreg_status,
+    pip_exec_sreg_override_enable   =>  pip_exec_sreg_override_enable,
+    pip_exec_sreg_override_value    =>  pip_exec_sreg_override_value
 );
 
 sreg: status_registry
@@ -607,10 +656,15 @@ port map(
     -- in:
     clk             => clk,
     reset           => cpu_reset,
-    w_e_sreg        => pip_dec_sreg_write_enable,
-    status_in       => alu_sreg_status,
-    override        => pip_dec_sreg_override_enable,
-    override_value  => pip_dec_sreg_override_value, 
+--    w_e_sreg        => pip_dec_sreg_write_enable,
+--    status_in       => alu_sreg_status,
+--    override        => pip_dec_sreg_override_enable,
+--    override_value  => pip_dec_sreg_override_value,
+    
+    w_e_sreg        => pip_exec_sreg_write_enable,
+    status_in       => pip_exec_alu_sreg_status,
+    override        => pip_exec_sreg_override_enable,
+    override_value  => pip_exec_sreg_override_value,
     
     -- out:
     status_out => sreg_alu_status
@@ -730,8 +784,8 @@ dm_z_addr <= sp_dm_addr when dec_sp_enable = '1' else z_addr_out;
 port_for_btns <= "000"&btnR&btnU&btnD&btnL&btnC;
 
 --MUXing the data going out of the writeback stage: mux the result of the Writeback between ALU result and DM Result
---mux_alu_dm_data <= alu_mux_dm_out when dec_mux_select_alu_dm = '0' or br_mux_select_alu_dm = '0' else dm_mux_data_out;
-mux_alu_dm_data <= dm_mux_data_out;
+mux_alu_dm_data <= alu_mux_dm_out when dec_mux_select_alu_dm = '0' or br_mux_select_alu_dm = '0' else dm_mux_data_out;
+--mux_alu_dm_data <= alu_mux_dm_out;
 
 --MUXing the data going into the rf
 mux_im_rf_data <= mux_alu_dm_data when pip_dec_rf_immediate = '0' else pip_dec_immediate_value;

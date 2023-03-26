@@ -1,8 +1,9 @@
 Vivado Simulator v2021.1
 Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto 3aa7d55ed11646698b6a1068b45149b1 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot toplevel_tb_behaviour_cfg_behav xil_defaultlib.toplevel_tb_behaviour_cfg -log elaborate.log 
+Running: C:/Xilinx/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto 3aa7d55ed11646698b6a1068b45149b1 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot toplevel_tb_behaviour_cfg_behav xil_defaultlib.toplevel_tb_behaviour_cfg xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
+Pass Through NonSizing Optimizer
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
@@ -14,6 +15,13 @@ Compiling package ieee.numeric_std
 Compiling package xil_defaultlib.pkg_instrmem
 Compiling package xil_defaultlib.pkg_processor
 Compiling package xil_defaultlib.pkg_io
+Compiling package vl.vl_types
+Compiling module xil_defaultlib.glbl
+Compiling module unisims_ver.IBUF
+Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=50.37...
+Compiling module unisims_ver.BUFG
+Compiling module xil_defaultlib.clk_wiz_0_clk_wiz
+Compiling module xil_defaultlib.clk_wiz_0
 Compiling architecture behavioral of entity xil_defaultlib.program_counter [program_counter_default]
 Compiling architecture behavioral of entity xil_defaultlib.program_memory [program_memory_default]
 Compiling architecture behavioral of entity xil_defaultlib.pip_fetch [pip_fetch_default]
@@ -21,6 +29,7 @@ Compiling architecture behavioral of entity xil_defaultlib.decoder [decoder_defa
 Compiling architecture behavioral of entity xil_defaultlib.pip_decode [pip_decode_default]
 Compiling architecture behavioral of entity xil_defaultlib.register_file [register_file_default]
 Compiling architecture behavioral of entity xil_defaultlib.alu [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.pip_execute [pip_execute_default]
 Compiling architecture behavioral of entity xil_defaultlib.status_registry [status_registry_default]
 Compiling architecture behavioral of entity xil_defaultlib.branch_controller [branch_controller_default]
 Compiling architecture behavioral of entity xil_defaultlib.z_address [z_address_default]

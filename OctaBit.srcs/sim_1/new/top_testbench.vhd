@@ -39,7 +39,7 @@ architecture Behavioral of toplevel_tb is
 
   component toplevel
     port (
-        clk              : in  STD_LOGIC;
+        clk_in              : in  STD_LOGIC;
         led                 : out std_logic_vector(15 downto 0) := (others => '1');
         sw                  : in std_logic_vector(15 downto 0);
         seg                 : out std_logic_vector(6 downto 0) := (others => '1');
@@ -53,7 +53,7 @@ architecture Behavioral of toplevel_tb is
 
   -- component ports
   signal reset          : STD_LOGIC;
-  signal clk            : STD_LOGIC:='0';
+  signal clk_in            : STD_LOGIC:='0';
 
   signal port_out_B      : STD_LOGIC_VECTOR (7 downto 0);
   signal port_out_C      : STD_LOGIC_VECTOR (7 downto 0);
@@ -71,7 +71,7 @@ begin
   DUT: toplevel
     port map (
       btnC              => reset,
-      clk               => clk,
+      clk_in               => clk_in,
       led               => open,
       sw                => sw,
       seg               => open,
@@ -82,7 +82,7 @@ begin
       );
 
   -- clock generation
-  clk <= not clk after 10 ns;
+  clk_in <= not clk_in after 10 ns;
 
   -- waveform generation
   WaveGen_Proc: process

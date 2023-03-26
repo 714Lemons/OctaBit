@@ -8,6 +8,7 @@ vhdl xil_defaultlib  \
 "../../../../OctaBit.srcs/sources_1/imports/new/pkg_io.vhd" \
 "../../../../OctaBit.srcs/sources_1/new/mem_mapped_io.vhd" \
 "../../../../OctaBit.srcs/sources_1/new/pip_decode.vhd" \
+"../../../../OctaBit.srcs/sources_1/new/pip_execute.vhd" \
 "../../../../OctaBit.srcs/sources_1/new/pip_fetch.vhd" \
 "../../../../OctaBit.srcs/sources_1/imports/new/pkg_instrmem.vhd" \
 "../../../../OctaBit.srcs/sources_1/new/program_counter.vhd" \
