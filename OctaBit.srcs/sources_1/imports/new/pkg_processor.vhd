@@ -3,13 +3,11 @@ use ieee.std_logic_1164.all;
 
 package pkg_processor is
 
--- ALU op_code_in
-    constant op_add : std_logic_vector(3 downto 0) := "0000";  -- Addition (opA = opA + opB)
-    constant op_nop : std_logic_vector(3 downto 0) := "0000";  --NoOperation. wird als add implementiert. ergebnis wird nicht gespeichert
-    constant op_sub : std_logic_vector(3 downto 0) := "0001";  -- Subtraction
-    constant op_or : std_logic_vector(3 downto 0) := "0010";  -- bitwise OR
+    constant op_add : std_logic_vector(3 downto 0) := "0000";  
+    constant op_nop : std_logic_vector(3 downto 0) := "0000";  
+    constant op_sub : std_logic_vector(3 downto 0) := "0001";  
+    constant op_or : std_logic_vector(3 downto 0) := "0010"; 
 
-    --my own op code defines
     constant op_adc     : std_logic_vector(3 downto 0) := "0011";               --ADC, ROL
     constant op_and     : std_logic_vector(3 downto 0) := "0100";               --bitwise and
     constant op_eor     : std_logic_vector(3 downto 0) := "0101";               --bitwise xor
